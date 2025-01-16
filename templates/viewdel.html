@@ -1,0 +1,24 @@
+{% extends 'sbase.html' %}
+{% block content %}
+
+<br><br><center>
+<strong>Today's Delivery </strong>
+
+<table id="tab" width="80%">
+<tr><th>Sno<th>OrderID<th>Address<th>Quantity<th >Delivery
+	{% for d in data%}
+	
+	<tr><td>{{forloop.counter}}<td>{{d.orderid}}<td>{{d.address}}<td>{{d.d_date}} <TD>
+	
+			<form method="get" action="/delivered/">
+			<input type="hidden" name="id" value="{{d.id}}">
+			<input type="hidden" name="oid" value="{{d.orderid}}">
+		<input type="submit" value="Delivered	">
+			</form>
+	{% endfor %}
+</table>
+<br>
+<hr>
+<br>
+
+{% endblock %}

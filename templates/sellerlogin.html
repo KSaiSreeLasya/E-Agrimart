@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+<div class="login">
+	<div class="container">
+		<div class="login-main">
+		<h4>{{msg}}</h4>
+			  <h1>Seller Login</h1>
+		  <div class="col-md-6 login-left">
+			<h2></h2>
+			<form method="post" action="/sellerlogin/">
+			{% csrf_token %} 
+
+				<input type="text" placeholder="User Id" required="" name="uid">
+				<input type="password" placeholder="Password" required="" name="pwd">
+				<input type="submit" value="Login">
+			</form>
+		  </div>
+		
+		  </div>
+		  <div class="clearfix"> </div>
+		</div>
+<br><br>
+		<a href="/sellersignup"><h3>Registration</h3></a>
+	</div>
+</div>{% endblock %}

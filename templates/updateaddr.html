@@ -1,0 +1,27 @@
+{% extends 'userbase.html' %}
+{% block content %}
+
+{{msg}}
+<div class="signin">
+	<div class="container">
+		<div class="signin-main">
+
+<table width="90%" align="center" id="tab">
+	
+			<h2>Add Another Address </h2><form method="post" action="/manageaddress/">
+				{% csrf_token %} 
+				<input type="text" placeholder="Complete Address" name="addr">
+				<input type="text" class="no-margin" placeholder="Adress Type (eg: Home, office, etc.)" name="addrtype">
+				<input type="text" placeholder="City" required="" name="city"/>
+				<input type="text" class="no-margin" placeholder="Zip " name="zip" required=""/>
+				
+				
+				<input type="submit" value="Add">
+			</form>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

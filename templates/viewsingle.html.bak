@@ -1,0 +1,93 @@
+
+
+{% extends 'userbase.html' %}
+{% block content %}
+
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+
+<div class="single">
+   <div class="container">
+   	 <div class="single-main">
+   	 	<div class="single-top-main">
+	   		<div class="col-md-5 single-top">	
+			   <div class="flexslider">
+				  <ul class="slides">
+
+
+				        <div class="thumb-image"> <img src="{{baseUrl}}/{{d.photo}}" data-imagezoom="true" class="img-responsive"> </div>
+			
+				
+				  </ul>
+			</div>
+			</div>
+			<div class="col-md-7 single-top-left simpleCart_shelfItem">
+
+				<h1>{{d.prod_name}}</h1>
+		
+				<h6 class="item_price">${{d.cost}}</h6>	
+					
+							{% if d.availability > 0 %}
+									<form method="post" action="/addtocart/">
+									{% csrf_token %} 
+				<h6 class="item_price">Estimation of delivery: {{ddate}}</p>
+					<h6 class="item_price">Quantity:
+				<ul class="bann-btns">
+					<li><select class="bann-size" name="qua">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+			
+					</select>
+					</h6>
+					</li>
+	
+						
+									
+											<input type="hidden" name="pid" value="{{d.id}}">
+											<input type="hidden" name="ddate" value="{{ddate}}">
+											<input type="hidden" name="sid" value="{{d.sid}}">
+
+					
+										<input type="submit" value="Add to Cart"  class="bann-btns">
+									</form>
+
+									{% else %}
+									<h4>No Stock</h4>
+										<form method="post" action="/notify/">
+										{% csrf_token %} 
+									
+											<input type="hidden" name="pid" value="{{d.id}}">
+																
+											<input type="hidden" name="pname" value="{{d.prod_name}}">
+							
+
+					
+										<input type="submit" value="Notify Me"  class="bann-btns">
+									</form>
+				
+					{% endif %}
+				
+				
+				</ul>
+
+			
+
+			</div>
+		   <div class="clearfix"> </div>
+		   	{{d.description}}
+	   </div>	   </div>	   </div>
+
+
+
+
+{% endblock %}

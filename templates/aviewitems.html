@@ -1,0 +1,64 @@
+{% extends 'adminbase.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% static "assets/images" as baseUrl %}
+
+<div class="products">
+		<div class="container">
+			<div class="col-md-4 products-left">
+				<div class="categories">
+					<h2>Categories</h2>
+					<ul class="cate">
+						{% for d in cat %}
+
+							
+
+						<li><a href="{% url 'aviewcatitems' cat=d.catname%}"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{d.catname}}</a></li>
+						{% endfor %}	
+					</ul>
+				</div>																																												
+			</div>
+			<div class="col-md-8 products-right">
+				<table><tr>
+				{% for d in item %}
+<td>
+				
+					{% csrf_token %} 
+		
+												<img title=" " alt=" " src="{{baseUrl}}/{{d.photo}}" width="200">		
+											
+<center>
+												<p><font size="" color="{{d.itemtype}}">{{d.itemname}}</font></p>
+												<h4>{{d.itemcost}} Rs/- </h4>
+											</div>
+											
+						<input type="hidden" name="name" value="{{d.itemname}}">
+						<input type="hidden" name="id" value="{{d.id}}">
+						<input type="hidden" name="cost" value="{{d.itemcost}}">
+						
+
+													<div class="snipcart-details top_brand_home_details">
+													
+
+												</form>
+											</div>
+										</div>
+									</figure>
+								
+					
+					{% endfor %}
+				</table>
+						<div class="clearfix"> </div>
+				</div>
+				
+			</div>
+
+
+			<div class="clearfix"> </div>
+		</div>		
+	</div>
+	</div>
+{% endblock %}

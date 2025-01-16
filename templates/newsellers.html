@@ -1,0 +1,38 @@
+		
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+<h3>
+<table align="right">
+<tr>
+	<td><a href="/viewsellers">View Sellers</a></td>
+</tr>
+</table>
+<br><br>
+<strong>New Sellers</strong></h3>
+
+			<table id="tab" width="70%">
+			<tr><th>Seller Id<th>Name<th>Email<th>Phone<th>Address<Th><Th>
+				{% for d in emp%}
+	<tr><td>{{d.sid}}<td>{{d.name}}<td>{{d.email}} <td>{{d.phone}}<td>{{d.address}} 
+
+<td> <form method="get" action="/sellerstz/">
+	
+	<input type="hidden" name="stz" value="Accepted">
+<input type="hidden" name="id" value="{{d.id}}">
+<input type="submit" value="Accept">
+</form>
+
+<td> <form method="get" action="/sellerstz/">
+	<input type="hidden" name="stz" value="Rejected">
+<input type="hidden" name="id" value="{{d.id}}">
+<input type="submit" value="Reject">
+</form>
+
+			{% endfor %}
+</table>
+<br><br>
+{% endblock %}

@@ -1,0 +1,66 @@
+		
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block content %}
+
+<br><h3>
+<strong>View Orders</strong></h3><br><br>
+
+
+<strong>Today's Delivery </strong>
+
+<table id="tab" width="80%">
+<tr><th>Sno<th>Product<th>PID<th>Quantity<th >Delivery
+	{% for d in t%}
+	
+	<tr><td>{{forloop.counter}}<td>{{d.prod_name}}<td>{{d.pid}}<td>{{d.quantity}}<td>{{d.d_date}} 
+		
+	{% endfor %}
+</table>
+<br>
+<hr>
+<br>
+<strong>New Orders</strong>
+
+<table id="tab" width="80%">
+<tr><th>Sno<th>Product<th>PID<th>Quantity<th >Delivery Date <th>
+	{% for d in o%}
+	
+	<tr><td>{{forloop.counter}}<td>{{d.prod_name}}<td>{{d.pid}}<td>{{d.quantity}}<td>{{d.d_date}}<td>
+	<form method="get" action="/accept/">
+	<input type="hidden" name="id" value="{{d.id}}">
+	<input type="submit" value="Accept">
+		
+	</form>
+
+	{% endfor %}
+
+
+</table>
+<br>
+<hr>
+<br>
+<strong>Confirmed</strong>
+
+<table id="tab" width="80%">
+<tr><th>Sno<th>Product<th>PID<th>Quantity<th >Delivery
+	{% for d in c%}
+	
+	<tr><td>{{forloop.counter}}<td>{{d.prod_name}}<td>{{d.pid}}<td>{{d.quantity}}<td>{{d.d_date}}
+
+	{% endfor %}
+</table>
+
+
+
+</table>
+
+
+
+
+
+
+<br><br>
+
+{% endblock %}

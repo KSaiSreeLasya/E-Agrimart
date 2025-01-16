@@ -1,0 +1,26 @@
+
+{% extends 'userbase.html' %}
+{% block content %}
+<br><br>
+{% load static %}
+<h1>Welcome {{data.name}}</h1>
+
+	<br>{{msg}}<br>
+
+
+	<table id="tab" width="40%" align="right">
+
+<tr>
+	<td><h2>{{ data.name }}</h2>
+<tr>
+	<td><img src="{% static 'images/email.png' %}" width="30" alt="">&nbsp;&nbsp;{{ data.email }}</td>
+</tr>
+<tr>
+	<td><img src="{% static 'images/ph.png' %}" width="30" alt="">&nbsp;&nbsp;{{ data.phone }}</td>
+</tr>
+
+
+</table>
+
+	<br><br>
+{% endblock %}

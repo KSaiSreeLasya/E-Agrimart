@@ -1,0 +1,16 @@
+		
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block content %}
+
+<br><h3>
+<strong>View Sellers</strong></h3>
+			<table id="tab" width="70%">
+			<tr><th>Seller Id<th>Name<th>Email<th>Phone<th>Address
+				{% for d in data%}
+	<tr><td>{{d.sid}}<td>{{d.name}}<td>{{d.email}} <td>{{d.phone}}<td>{{d.address}}
+			{% endfor %}
+</table>
+<br><br>
+{% endblock %}

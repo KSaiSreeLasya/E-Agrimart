@@ -1,0 +1,30 @@
+{% extends 'userbase.html' %}
+{% block content %}
+
+{{msg}}
+
+<div class="signin">
+	<div class="container">
+		<div class="signin-main">
+
+			<h2>Update Address </h2>
+			
+			<form method="post" action="/manageaddress/">
+			
+				{% csrf_token %} 
+				
+				<input type="text" placeholder="Complete Address" value="{{d.address}}"  name="addr">
+				<input type="text" class="no-margin" placeholder="Adress Type (eg: Home, office, etc.)" value="{{d.addr_type}}"   name="addrtype">
+				<input type="text" placeholder="City" required="" name="city"  value="{{d.city}}" />
+				<input type="text" class="no-margin" placeholder="Zip " name="zip" required=""  value="{{d.zip}}" />
+				
+				
+				<input type="submit" value="Add">
+			</form>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+		
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block content %}
+{% static "images" as baseUrl %}
+
+<br><h3>
+<strong>View Orders</strong></h3><br><br>
+
+
+<strong>Your Orders</strong>
+
+<table id="tab" width="100%">
+<tr><th>Sno<th>Product<th>Product Details <th> Delivery Status
+	{% for d in o%}
+	
+	<tr>
+<td bgcolor="#ffffff">{{forloop.counter}}<td bgcolor="#ffffff">			<img  src="{{baseUrl}}/{{d.photo}}" class="img-responsive" alt="" width="100">
+						<td bgcolor="#ffffff">{{d.prod_name}}<br>Quantity: {{d.quantity}} units<br>Unit Cost: ${{d.unit_cost}}<br>Total Cost: ${{d.tot_cost}}
+						<br>Estimated Delivery Date: {{d.d_date}}<td width="30%" bgcolor="#ffffff">
+{{d.stz}}
+ <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{d.progress}}%"><span class="sr-only">{{d.stz}}</span></div>
+      </div>
+
+	</form>
+
+	{% endfor %}
+
+
+</table>
+
+
+<br><br>
+
+{% endblock %}

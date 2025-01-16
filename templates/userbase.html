@@ -1,0 +1,196 @@
+
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Users</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"  rel="stylesheet" type="text/css" media="all">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<!-- Custom Theme files -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Shoplist Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- start-smoth-scrolling -->
+<script type="text/javascript"  src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript"  src="{% static 'js/easing.js' %}"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+<!-- //end-smoth-scrolling -->
+<script src="{% static 'js/simpleCart.min..js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</head><head>
+<style>
+#tab {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+   
+}
+
+#tab td, #tab th {
+    border: 1px solid #fedee4;
+    padding: 8px;
+}
+
+#tab tr:nth-child(even){background-color: #fedee4;}
+
+#tab tr:hover {background-color: #ddd;}
+
+#tab th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f55a5f;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+<!--header strat here-->
+<div class="header">
+	<div class="container">
+		<div class="header-main">
+			<div class="top-nav">
+				<div class="content white">
+	              <nav class="navbar navbar-default" role="navigation">
+					    <div class="navbar-header">
+					        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						        <span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+					        </button>
+					        <div class="navbar-brand logo">
+								<a href="/"><h2><strong>E-AgriMart </em></strong></h2></a>
+							</div>
+					    </div>
+					    <!--/.navbar-header-->
+					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					        <ul class="nav navbar-nav">
+					        	   <li><a href="/userhome"><strong>Home</strong></a></li>
+				
+						           <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Category </strong> <b class="caret"></b></a>
+						            <ul class="dropdown-menu multi-column columns-3">
+							            <div class="row">
+								            <div class="col-sm-4">
+									            <ul class="multi-column-dropdown">
+
+														{% for d in cat %}
+														<li><a href="{% url 'uviewproducts' cid=d.id%}">{{d.cat_name}}</a></li>
+										        		{% endfor %}	
+
+									            </ul>
+								            </div>
+											</div>
+											 </ul>
+						           
+						        <li><a href="/uvieworders"><strong>Orders</strong></a></li>	  
+     <li><a href="/userlogout"><strong>Logout</strong></a></li>
+					        </ul>
+					    </div>
+					    <!--/.navbar-collapse-->
+					</nav>
+					<!--/.navbar-->
+				</div>
+			</div>
+				<div class="header-right">
+				<div class="search">
+					<div class="search-text">
+					    <form method="post" action="/search/">
+						{% csrf_token %} 
+						<input class="serch"  type="text" name="name" value="Product Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"/>
+					
+					</form></div>
+					</div>
+					<div class="cart box_1">
+					
+							<a href="/cartview">
+								<img src="{% static 'images/cart.png' %}" alt=""/>
+									</a>	
+									&nbsp;&nbsp;
+									<a href="/profile/">
+								<img src="{% static 'images/signin.png' %}" alt=""/>
+									</a>
+						
+					</div>    
+ 
+				</div>
+			</div>
+
+
+	</div>
+</div>
+<!--header end here-->
+<!--contact start here-->
+<div class="banner">
+			<div class="contact-top"><br>
+				<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+				
+			</div>
+
+</div>
+<div class="contact">
+	<div class="container">
+		<div class="contact-main">
+			
+			
+
+
+		{% block content %}
+
+		  	  {% endblock %}
+
+		  <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--contact end here-->
+<!--map start here-->
+<div class="map">
+
+</div>
+<!--map end here-->
+<!--footer strat here-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+			<div class="ftr-grids-block">
+				<div class="col-md-3 footer-grid">
+					
+				</div>
+				<div class="col-md-3 footer-grid">
+					
+				</div>
+				<div class="col-md-3 footer-grid">
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid-icon">
+					
+				</div>
+		    <div class="clearfix"> </div>
+		  </div>
+		  <div class="copy-rights">
+	     <p> All Rights Reserved. </p>		   </div>
+		</div>
+	</div>
+</div>
+<!--footer end here-->
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'userbase.html' %}
+{% block content %}
+
+{{msg}}
+
+<div class="signin">
+	<div class="container">
+		<div class="signin-main">
+<h3><strong>Your Address</h3></strong><br><br>
+<table width="90%" align="center" id="tab">
+<tr><th>Address Type <th>Address<th>City<th>Zip<th>
+	{% for d1 in data%}
+	<tr><td>{{d1.addr_type}}<td>{{d1.address}}<td>{{d1.city}}<td>{{d1.zip}}<td width="20%">
+		<table>
+				<tr>
+					<td>
+	<form method="get" action="/deleteaddress/">
+	<input type="hidden" name="id" value="{{d1.id}}">
+		<input type="submit" value="Delete" >
+	</form>
+<td>
+		<form method="get" action="/updateaddress/">
+<input type="hidden" name="id" value="{{d1.id}}">
+		<input type="submit" value="Edit" >
+	</form>
+	</td>
+				</tr>
+				</table>			
+							{% endfor %}
+			
+</tr>
+</table>
+<a href="/addaddr">	Add Another Address </a>	
+
+</div>
+	</div>
+</div>
+
+
+{% endblock %}

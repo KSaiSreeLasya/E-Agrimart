@@ -1,0 +1,115 @@
+
+
+{% extends 'userbase.html' %}
+{% block content %}
+
+{% load static %}
+{{msg}}
+
+<form method="post" action="/couponverify/">
+{% csrf_token %}
+		<table id="tab" width="40%">
+<tr>
+	<tH>Coupon</th>
+		<td><input type="text" name="coupon"class="form-control" required>
+		<input type="hidden" name="sid" value="{{sid}}" required>
+
+		<input type="hidden" name="amt" value="{{tot}}" class="form-control"  required  placeholder="" readonly></td>
+		
+		<tr><td><td><input type="submit" class="form-control" value="Apply">
+</td>
+</tr>
+</table>
+
+	</form>	
+	<form method="post" action="/payment_u/">
+	{% csrf_token %} 
+	<center><h2><strong>Payment</strong></h3>
+<br>
+</center>
+
+	<table id="tab" width="60%" align="center">
+<tr>
+<tr>
+	<td><b>Amount</td>
+	<td><input type="text" name="" value="{{tot}}" class="form-control"  required  placeholder="" readonly></td>
+</tr>
+<tr><td>
+
+ <label for="debitCardNumber">Enter Debit Card Number:</label><td>
+    <input type="text" id="debitCardNumber" name="debitCardNumber" class="form-control"  oninput="validateDebitCard()">
+    <br>
+<tr><td>
+    <label for="cvv">Enter CVV:</label><td>
+    <input type="text" id="cvv" name="cvv" oninput="validateDebitCard()" class="form-control"  >
+    <br>
+   
+
+	</tr>
+<tr>
+	<td><b>Expiry</td>
+	<td>
+	<input type="month" name="selectedMonth" id="selectedMonth" class="form-control" required>
+
+	
+
+</tr>
+<tr>
+	<td>
+	<div id="validationResult"></div>
+	</td>
+
+
+		<td> <button type="submit" id="validateButton" disabled>Pay</button>
+
+	</form>
+</table>
+
+	
+<script>
+    // Get today's date
+    var today = new Date();
+
+    // Get the input element
+    var inputMonth = document.getElementById("selectedMonth");
+
+    // Set the minimum value for the input to the current month
+    inputMonth.min = today.toISOString().slice(0, 7);
+</script>
+
+<script>function validateDebitCard() {
+    var debitCardNumber = document.getElementById("debitCardNumber").value;
+    var cvv = document.getElementById("cvv").value;
+    var validateButton = document.getElementById("validateButton");
+    
+    // Remove any spaces or hyphens from the card number
+    debitCardNumber = debitCardNumber.replace(/\s+/g, '').replace(/-/g, '');
+
+    // Check if the entered value is numeric
+    if (!/^\d+$/.test(debitCardNumber)) {
+        document.getElementById("validationResult").innerText = "Please enter a numeric card number.";
+        validateButton.disabled = true;
+        return;
+    }
+
+    // Check if the length of the card number is between 12 and 19 digits (inclusive)
+    if (debitCardNumber.length < 16 || debitCardNumber.length > 16) {
+        document.getElementById("validationResult").innerText = "Invalid card number length.";
+        validateButton.disabled = true;
+        return;
+    }
+
+    // Validate CVV
+    if (!/^\d{3}$/.test(cvv)) {
+        document.getElementById("validationResult").innerText = "Please enter a valid CVV (3 digits).";
+        validateButton.disabled = true;
+        return;
+    }
+
+    // If all validation passes, enable the button and display success message
+    document.getElementById("validationResult").innerText = "Debit card number and CVV are valid.";
+    validateButton.disabled = false;
+}
+</script>
+
+{% endblock %}

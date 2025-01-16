@@ -1,0 +1,58 @@
+		
+{% extends 'sbase.html' %}
+{% load static %}
+
+{% block content %}
+{% static "images" as baseUrl %}
+	<strong>{{msg}}</strong>
+	<h2><br><br>
+<strong>Select Category			</strong>		
+			</h4>
+					<div class="ckeckout-top">
+			<div class=" cart-items heading">
+		<form method="post" action="/viewproducts/">
+							{% csrf_token %} 
+							<table id="tab" width="50%">
+							<tr>
+								<th align="center"><center><select name="cat" class="form-control">	
+							{% for d in cat %}
+
+							<option value="{{d.cat_name}}" >{{d.cat_name}}
+				
+							{% endfor %}
+			
+						</select>
+						<td align="center"><input type="submit" value="Get Products" class="form-control"></td>
+							</tr>
+							</table>
+		</form>
+<br>
+
+<table id="tab" width="100%" ><tr>
+					<th align="center"><center>Item
+					<th align="center"><center>Product Name		
+					<th align="center"><center>Unit Price
+					<th align="center"><center>Availability
+				<th align="center"><center>
+					{% for d in prod %}
+	
+						<tr>
+						<td align="center">
+<img  src="{{baseUrl}}/{{d.photo}}" class="img-responsive" alt="" width="100">		
+				
+						
+						<td align="center">{{d.prod_name}}
+						<td align="center">$ {{d.cost}}
+						<td align="center">{{d.availability}}
+						<td align="center"><form method="get" action="/addstocks/">
+		
+							<input type="hidden" name="pid"value="{{d.id}}">
+							<input type="submit" value="Add Stocks" class="form-control">
+						</form>
+
+			{% endfor %}
+			</table>
+			</div>		</div>
+
+			
+{% endblock %}

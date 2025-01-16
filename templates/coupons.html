@@ -1,0 +1,54 @@
+
+{% extends 'adminbase.html' %}
+
+{% load static %}
+{% block content %}
+
+
+<h6>
+	
+{{msg}}
+	</h6>
+	<h3>
+	Coupons<br><br>
+</h2>
+</h3>
+<center>
+				<table id="tab" width="60%">
+<tr>
+	<th width="5%">Sno<th>Coupon Code<th><center>Discount<th>
+
+
+				{% for d in data %}
+<tr><td>{{forloop.counter}}<td><font size="" color="#ff0066">{{d.code}}</font><td><center><font size="" color="#ff0066">{{d.discount}} %</font><td><center>
+
+<form method="post" action="/deletecode/">
+{% csrf_token %} 
+
+<input class="form-control"  type="hidden" name="id" value="{{d.id}}">
+<input class="form-control"  type="submit" value="Deactive">
+	
+</form>
+
+				{% endfor %}
+</table>
+<br><br>
+
+<h3> <font size="" color="#990000">Add Coupons</h3>
+<br>
+<form method="post" action="/addcoupons/">
+	{% csrf_token %} 
+	<table   width="65%">
+	<tr>
+		<td><input class="form-control"  type="text"  name="code" required placeholder="Enter topic name ">
+		<td><input class="form-control"  type="number" min=1 max=90  name="discount" required placeholder="Discount">
+		<td><input class="form-control"  type="submit" value="Upload" ></td>
+	</tr>
+	</table></font>
+</form><br>
+
+<center><br><br>
+
+       
+	
+{% endblock %}

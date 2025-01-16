@@ -1,0 +1,64 @@
+{% extends 'sbase.html' %}
+{% load static %}
+
+{% block content %}
+{% static "images" as baseUrl %}
+{{msg}}<br><br>
+<h1>Add Items</h1>
+ 
+<!-- <br><br>
+<table id="tab" width="60%">
+
+<tr><th>Item Id<th>Category<th>Item Name
+<th>Item Type
+<th>Item Cost
+
+
+
+{% for d in item %}
+
+<tr><td>{{d.id}}<td>{{d.catname}}<td>{{d.itemname}}<td>{{d.itemtype}}<td>{{d.itemcost}}
+
+{% endfor %}
+</table>
+ -->
+
+
+<form method="post" action="/additemaction/" enctype="multipart/form-data">
+	{% csrf_token %} 
+
+<table id="tab"  width="80%" align="left"cellspacing="10">
+
+<tr><td>Select Product Category
+<select name="cat" class="form-control" >
+{% for d in cat %}
+	<option value="{{d.cat_name}}|{{d.id}}">{{d.cat_name}}
+{% endfor %}
+</select><br>
+<tr><td>
+Product Name
+<input class="form-control"  type="text" name="name" placeholder="Enter Item Name " value="{{name}}" required="required" ><br>
+<tr><td>
+Product Cost
+<input class="form-control"  type="number" name="cost" placeholder="Enter Cost " required="required" value="{{cost}}"  ><br>
+<tr>
+<td>
+No. of availability
+<input class="form-control"  type="number" name="ava" placeholder="Enter No. of availability" required="required" value="{{ava}}" >
+
+<tr><td>
+Upload Image
+<input class="form-control"  type="file" name="itemimage" placeholder="Upload Image" accept="image/*" required="required" >
+
+<tr><td>
+Description
+<textarea name="des" class="form-control" rows="" cols=""></textarea>
+
+</input><tr><td><br><input type="submit" class="form-control" value="Add">
+                
+</table>
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'sbase.html' %}
+{% block content %}
+{{msg}}
+<h1>Add Stocks</h1>
+
+
+
+<br><form method="post" action="/addstocks/" >
+	{% csrf_token %} 
+<center>
+<table id="tab"  width="60%" cellspacing="10">
+
+<tr><th>
+
+<input type="hidden" name="pid" value="{{pid}}">
+<input class="form-control"  type="number" name="stocks" placeholder="Enter Stocks" required="required" min=1 >
+
+
+
+<tr><td><br><input type="submit" class="form-control" value="Add">
+                
+</table>
+</form>
+
+
+
+{% endblock %}

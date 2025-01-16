@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<font size="+1" color="red">{{msg}}
+<center>
+</font>
+<h2>Change Password</h2>
+<br>
+
+	<br>
+<form  method="post" action="/resetpage/">
+	{% csrf_token %} 
+<table >
+
+
+                    <tr><td><input class="w3-input"  type="email" name="useremail" placeholder="Enter Email" required="required"  size="50"   onblur=""></input></td></tr>
+        
+
+      
+					<tr><td>
+					<button type = "submit" onclick="return matchPassword()">Submit</button>  
+                
+</table>
+</form>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+<div class="login">
+	<div class="container">
+		<div class="login-main">
+		<h4>
+		{{msg}}</h4>
+			  <h1>User Login</h1>
+		  <div class="col-md-6 login-left">
+			<h2>Existing User</h2>
+			<form method="post" action="/userlogin/">
+			{% csrf_token %} 
+
+				<input type="text" placeholder="Email" required="" name="uid" value="">
+				<input type="password" placeholder="Password" required="" name="pwd">
+				<input type="submit" value="Login">
+			</form>
+			
+		  </div>
+		  <div class="col-md-6 login-right">
+		  	 <h3>New User? Create an Account</h3>
+		  	 <p>Sign up is a phrase referring to the creation of an online account using an e-mail address or a username and password. It enables users and organizations to independently register and gain access to your system.</p>
+		     <a href="/usersignup" class="login-btn">Create an Account </a>
+		  </div>
+		  <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+ {% if b %}
+
+	<b>Registration completed successfully !!	<a href="/userlogin">Login here</a></b>
+
+
+	 
+	 {% endif %}
+
+<div class="signin">
+	<div class="container">
+		<div class="signin-main">
+			<h1>Sign up</h1>
+			<h2>Basic Information</h2>
+
+			<form method="post" action="/signupaction/">
+			{% csrf_token %} 
+
+
+				<input type="text" placeholder="Name" name="name">
+				<input type="text" class="no-margin" placeholder="E-mail" name="email">
+				<input type="password" placeholder="Password" required="" name="pwd"/>
+				<input type="text" class="no-margin" placeholder="Phone" name="phone" required=""/>
+			<h2>Location Information</h2>
+				<input type="text" placeholder="Complete Address" name="addr">
+				<input type="text" class="no-margin" placeholder="Adress Type (eg: Home, office, etc.)" name="addrtype">
+				<input type="text" placeholder="City" required="" name="city"/>
+				<input type="text" class="no-margin" placeholder="Zip " name="zip" required=""/>
+				
+				
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

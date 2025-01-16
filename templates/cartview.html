@@ -1,0 +1,61 @@
+		
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block content %}
+{% static "images" as baseUrl %}
+	<strong>{{msg}}</strong>
+	
+					<div class="ckeckout-top">
+			<div class=" cart-items heading">
+<br>
+
+			<div class="in-check" >
+				<ul class="unit">
+					<li><span>Item</span></li>
+					<li><span>Product Name</span></li>		
+					<li><span>Unit Price</span></li>
+					<li><span>Quantity</span></li>
+					<li><span> Total Cost</li>		
+				
+					<div class="clearfix"> </div>
+				</ul>
+							<ul class="cart-header simpleCart_shelfItem">
+				{% for d in cart %}
+	
+						
+						<li class="ring-in">
+						<img  src="{{baseUrl}}/{{d.photo}}" class="img-responsive" alt="" width="100">	
+				
+						</li>
+						<li><span>{{d.prod_name}}</span></li>
+						<li><span class="item_price">$ {{d.unit_cost}}</span></li>
+							<li><span class="item_price"> {{d.quantity}} units</span></li>
+						<li><span class="item_price"><table width="100%">
+						<tr>
+							<td> {{d.tot_cost}} /-</td>
+							<td><a href="{% url 'cartdelete' op=d.id %}"><img src="{% static 'images/delete.png' %}" width="" alt=""></a>
+						</tr>
+						</table></span>		</li>	
+						
+				
+
+												
+					<div class="clearfix"> </div>
+				<hr>
+			{% endfor %}
+			</ul>
+			</div>		</div>
+
+			<form method="get" action="/payment/">
+ 
+
+					<table>
+					<tr>
+						<td><font size="" ><input bgcolor="#ff3333" type="submit" value="Buy" class="form-control"></font></td>
+					</tr>
+					</table>
+			</form>
+
+			
+{% endblock %}
